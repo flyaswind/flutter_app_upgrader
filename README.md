@@ -12,7 +12,6 @@ flutter应用升级插件
     //是否有新版本 currentLastFlag 0有新版本 1没有新版本
     //更新连接redirectUrl;
     //是否强制更新 forceFlag 0非强制更新 1强制
-    
     var mustJson={
     	"forceFlag": 1,
     	"currentLastFlag": 0,
