@@ -1,8 +1,3 @@
-# flutter_app_upgrade
-
-A new Flutter plugin.
-
-
 
 flutter应用升级插件
 
@@ -11,51 +6,32 @@ flutter应用升级插件
    IOS：根据传入的url跳转到AppStore
 
    1.提供简单的UI弹窗
-
+  
     //传入约定的json参考Version对应的json
-
     //更新内容remark
-
     //是否有新版本 currentLastFlag 0有新版本 1没有新版本
-
     //更新连接redirectUrl;
-
     //是否强制更新 forceFlag 0非强制更新 1强制
-
+    
     var mustJson={
-
     	"forceFlag": 1,
-
     	"currentLastFlag": 0,
-
     	"remark": "我是一个版本更新，此版本是强制更新，我是更新内容",
-
     	"redirectUrl": "https://*******.apk"
-
     };
-
     FlutterAppUpgrade.showUpgradeDialog(context, mustJson);
 
    2.提供直接更新的方法
-
+  
     含下载进度/失败回调
-
     FlutterAppUpgrade.upgradeApp(
-
                       "https://*****.apk",
-
                       downLoadCallBack: (current, total) {
-
                         print("共$total,已下载$current");
-
                       },
-
                       error: (err) {
-
                         print("更新异常：$err");
-
                       },
-
                     );
 
     权限说明：
