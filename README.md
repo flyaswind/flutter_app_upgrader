@@ -22,7 +22,8 @@ flutter应用升级插件
     FlutterAppUpgrade.showUpgradeDialog(context, mustJson);
 
    2.提供直接更新的方法
-  
+    
+    传入更新地址，安卓完成下载安装，iOS跳转到AppStore
     含下载进度/失败回调
     FlutterAppUpgrade.upgradeApp(
                       "https://*****.apk",
@@ -34,7 +35,7 @@ flutter应用升级插件
                       },
                     );
 
-    权限说明：
+    权限等配置说明：
         IOS无
         安卓清单文件需要含有以下配置
             <uses-permission android:name="android.permission.INTERNET" />
