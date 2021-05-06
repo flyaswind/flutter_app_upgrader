@@ -85,17 +85,6 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text("直接调用更新api   ${(_progress ?? 0) * 100}%"),
             ),
-            RaisedButton(
-              onPressed: () async {
-                print("================${await Permission.storage.status.isDenied}");
-                print("================${await Permission.storage.status.isGranted}");
-                print("================${await Permission.storage.status.isUndetermined}");
-                if (!await Permission.storage.isGranted) {
-                  Permission.storage.request();
-                }
-              },
-              child: Text("确保先申请读写权限"),
-            ),
           ],
         ),
       ),

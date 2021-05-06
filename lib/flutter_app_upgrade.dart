@@ -84,9 +84,7 @@ class FlutterAppUpgrade {
   ///是否强制更新 forceFlag 0非强制更新 1强制
   ///Map mustJson = {"forceFlag": 1, "currentLastFlag": 0, "remark": "我是一个版本更新，此版本是强制更新", "redirectUrl": "http"};
   ///Map json = {"forceFlag": 0, "currentLastFlag": 0, "remark": "我是一个版本更新，此版本不是强制更新，可跳過", "redirectUrl": "http"};
-  ///downLoadCallBack下载进度回调
-  ///error异常
-  static void showUpgradeDialog(BuildContext context, Map versionJson, {Function downLoadCallBack, Function error}) {
+  static void showUpgradeDialog(BuildContext context, Map versionJson) {
     if (context == null || versionJson == null) return;
     Version version = Version.fromJson(versionJson);
     if (version.isValidNewVersion())
