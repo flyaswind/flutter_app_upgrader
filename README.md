@@ -34,13 +34,15 @@ flutter应用升级插件
                       },
                     );
 
-    权限等配置说明：
-        IOS无
-        安卓清单文件AndroidManifest.xml需要含有以下配置
+   权限等配置说明：
+   
+         IOS无
+         安卓清单文件AndroidManifest.xml需要含有以下配置
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-        7.0之后的provider配置
+   7.0之后的provider配置
+            
             清单文件AndroidManifest.xml中application结点内添加
                 <provider
                     android:name="androidx.core.content.FileProvider"
