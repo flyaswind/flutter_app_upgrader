@@ -34,6 +34,10 @@ flutter应用升级插件
                       },
                     );
 
+   3.提供检查IOS AppStore里是否有不同版本的方法
+      
+     bool hasNewVersion = await FlutterAppUpgrade.hasNewVersionInAppStore();
+      
    权限等配置说明：
    
          IOS无
