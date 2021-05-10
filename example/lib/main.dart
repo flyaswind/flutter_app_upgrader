@@ -87,8 +87,7 @@ class _HomePageState extends State<HomePage> {
             ),
             RaisedButton(
               onPressed: () async {
-                print("=====checkNewVersion");
-                bool hasNewVersion = await FlutterAppUpgrade.hasNewVersionInAppStore("1547741115");
+                bool hasNewVersion = await FlutterAppUpgrade.hasNewVersionInAppStore();
                 print("=====$hasNewVersion");
               },
               child: Text("检查IOS当前版本是否是最新的"),
