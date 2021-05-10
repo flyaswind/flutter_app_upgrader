@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_app_upgrade/update_dialog_widget.dart';
 import 'package:flutter_app_upgrade/version.dart';
+import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 ///
@@ -112,6 +114,35 @@ class FlutterAppUpgrade {
         downLoadCallBack: downLoadCallBack,
         error: error,
       );
+    }
+  }
+
+  static Future<bool> hasNewVersionInAppStore(String iosAppId) async {
+    if (Platform.isIOS) {
+      var info = await PackageInfo.fromPlatform();
+      String url = "https://itunes.apple.com/cn/lookup?id=${info.packageName}";
+      // String url = "https://itunes.apple.com/cn/lookup?bundleId=cn.com.pateo.shouchebao";
+      var response = await Dio().request(url);
+      if (response.data is String) {
+        var data = JsonDecoder().convert(response.data);
+        if (data is Map &&
+            data['results'] != null &&
+            data['results'] is List &&
+            data['results'].length > 0 &&
+            data['results'][0] is Map) {
+          String version = data['results'][0]['version']?.toString() ?? "";
+          var info = await PackageInfo.fromPlatform();
+          if (info != null) {
+            return Future.value(version != info.version);
+          } else
+            return Future.value(false);
+        } else
+          return Future.value(false);
+      } else
+        return Future.value(false);
+    } else {
+      print("此方法只能应用于iOS平台");
+      return Future.value(false);
     }
   }
 

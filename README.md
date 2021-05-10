@@ -12,13 +12,13 @@ flutter应用升级插件
     //是否有新版本 currentLastFlag 0有新版本 1没有新版本
     //更新连接redirectUrl;
     //是否强制更新 forceFlag 0非强制更新 1强制
-    var mustJson={
+    var upgradeJson={
     	"forceFlag": 1,
     	"currentLastFlag": 0,
     	"remark": "我是一个版本更新，此版本是强制更新，我是更新内容",
     	"redirectUrl": "https://*******.apk"
     };
-    FlutterAppUpgrade.showUpgradeDialog(context, mustJson);
+    FlutterAppUpgrade.showUpgradeDialog(context, upgradeJson);
 
    2.提供直接更新的方法
     
@@ -36,12 +36,12 @@ flutter应用升级插件
 
     权限等配置说明：
         IOS无
-        安卓清单文件需要含有以下配置
+        安卓清单文件AndroidManifest.xml需要含有以下配置
             <uses-permission android:name="android.permission.INTERNET" />
             <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
         7.0之后的provider配置
-            清单文件application结点内添加
+            清单文件AndroidManifest.xml中application结点内添加
                 <provider
                     android:name="androidx.core.content.FileProvider"
                     android:authorities="{包名}.fileprovider"

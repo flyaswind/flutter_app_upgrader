@@ -85,6 +85,14 @@ class _HomePageState extends State<HomePage> {
               },
               child: Text("直接调用更新api   ${(_progress ?? 0) * 100}%"),
             ),
+            RaisedButton(
+              onPressed: () async {
+                print("=====checkNewVersion");
+                bool hasNewVersion = await FlutterAppUpgrade.hasNewVersionInAppStore("1547741115");
+                print("=====$hasNewVersion");
+              },
+              child: Text("检查IOS当前版本是否是最新的"),
+            ),
           ],
         ),
       ),
