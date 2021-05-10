@@ -117,10 +117,10 @@ class FlutterAppUpgrade {
     }
   }
 
-  static Future<bool> hasNewVersionInAppStore(String iosAppId) async {
+  static Future<bool> hasNewVersionInAppStore() async {
     if (Platform.isIOS) {
       var info = await PackageInfo.fromPlatform();
-      String url = "https://itunes.apple.com/cn/lookup?id=${info.packageName}";
+      String url = "https://itunes.apple.com/cn/lookup?bundleId=${info.packageName}";
       // String url = "https://itunes.apple.com/cn/lookup?bundleId=cn.com.pateo.shouchebao";
       var response = await Dio().request(url);
       if (response.data is String) {
@@ -131,11 +131,7 @@ class FlutterAppUpgrade {
             data['results'].length > 0 &&
             data['results'][0] is Map) {
           String version = data['results'][0]['version']?.toString() ?? "";
-          var info = await PackageInfo.fromPlatform();
-          if (info != null) {
-            return Future.value(version != info.version);
-          } else
-            return Future.value(false);
+          return Future.value(version != info.version);
         } else
           return Future.value(false);
       } else
