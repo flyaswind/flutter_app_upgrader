@@ -45,7 +45,7 @@ import 'package:url_launcher/url_launcher.dart';
 ///       </paths>
 ///
 ///
-class FlutterAppUpgrade {
+class FlutterAppUpgrader {
   static const MethodChannel _channel = const MethodChannel('flutter_app_upgrade');
 
   static Future<String> get platformVersion async {

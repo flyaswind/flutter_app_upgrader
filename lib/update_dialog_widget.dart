@@ -4,7 +4,7 @@
 */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_upgrade/flutter_app_upgrade.dart';
+import 'package:flutter_app_upgrade/flutter_app_upgrader.dart';
 import 'package:flutter_app_upgrade/version.dart';
 
 class UpdateDialogWidget extends StatefulWidget {
@@ -89,7 +89,7 @@ class _UpdateDialogWidgetState extends State<UpdateDialogWidget> {
                           child: InkWell(
                             onTap: () {
                               if (_progress == 0) {
-                                FlutterAppUpgrade.upgradeApp("${widget.version?.redirectUrl ?? ""}",
+                                FlutterAppUpgrader.upgradeApp("${widget.version?.redirectUrl ?? ""}",
                                     downLoadCallBack: (current, total) {
                                   print("downLoad===current:$current,total:$total");
                                   setState(() {
@@ -102,7 +102,7 @@ class _UpdateDialogWidgetState extends State<UpdateDialogWidget> {
                                   });
                                 });
                               } else if (_progress == 1) {
-                                FlutterAppUpgrade.installLocalUnInstalledApk();
+                                FlutterAppUpgrader.installLocalUnInstalledApk();
                               }
                             },
                             child: Center(
