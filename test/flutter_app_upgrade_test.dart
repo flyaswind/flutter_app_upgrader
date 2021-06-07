@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_app_upgrade/flutter_app_upgrade.dart';
+import 'package:flutter_app_upgrader/flutter_app_upgrader.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('flutter_app_upgrade');
@@ -18,6 +18,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await FlutterAppUpgrade.platformVersion, '42');
+    expect(await FlutterAppUpgrader.platformVersion, '42');
   });
 }
