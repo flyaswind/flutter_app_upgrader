@@ -20,15 +20,15 @@
 **安装说明：**
 
 	在 pubspec.yaml 中加入：
-		flutter_app_upgrade:
+		flutter_app_upgrader:
 			git:
-				url: https://github.com/flyaswind/flutter_app_upgrade.git
+				url: https://github.com/flyaswind/flutter_app_upgrader.git
 
 	执行 flutter 命令获取包
 		flutter pub get
 
 	引入
-		import 'package:flutter_app_upgrade/flutter_app_upgrade.dart';
+		import 'package:flutter_app_upgrade/flutter_app_upgrader.dart';
 
 	安卓平台需要的额外配置：
 		安卓清单文件./android/app/src/main/AndroidManifest.xml 需要含有以下配置
@@ -68,12 +68,12 @@
 		"remark": "我是一个版本更新，此版本是强制更新，我是更新内容",
 		"redirectUrl": "https://*******.apk"
     };
-    FlutterAppUpgrade.showUpgradeDialog(context, upgradeJson);
+    FlutterAppUpgrader.showUpgradeDialog(context, upgradeJson);
 
     2.提供直接更新的方法
     传入更新地址，安卓完成下载安装，iOS跳转到AppStore
     含下载进度/失败回调
-    FlutterAppUpgrade.upgradeApp(
+    FlutterAppUpgrader.upgradeApp(
     	"https://*****.apk",
         downLoadCallBack: (current, total) {
         	print("共$total,已下载$current");
@@ -84,6 +84,6 @@
     );
 
     3.提供检查IOS AppStore里是否有不同版本的方法
-    bool hasNewVersion = await FlutterAppUpgrade.hasNewVersionInAppStore();
+    bool hasNewVersion = await FlutterAppUpgrader.hasNewVersionInAppStore();
 
 
