@@ -5,8 +5,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_app_upgrade/update_dialog_widget.dart';
-import 'package:flutter_app_upgrade/version.dart';
+import 'package:flutter_app_upgrader/update_dialog_widget.dart';
+import 'package:flutter_app_upgrader/version.dart';
 import 'package:package_info/package_info.dart';
 import 'package:url_launcher/url_launcher.dart';
 

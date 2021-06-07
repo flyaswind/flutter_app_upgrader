@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app_upgrade/flutter_app_upgrade.dart';
+import 'package:flutter_app_upgrader/flutter_app_upgrader.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 void main() {
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                   "remark": "我是一个版本更新，此版本是强制更新",
                   "redirectUrl": "https://gz.bcebos.com/v1/newretail/test/update.apk"
                 };
-                FlutterAppUpgrade.showUpgradeDialog(context, mustJson);
+                FlutterAppUpgrader.showUpgradeDialog(context, mustJson);
               },
               child: Text("弹强更窗口"),
             ),
@@ -53,21 +53,21 @@ class _HomePageState extends State<HomePage> {
                   "remark": "我是一个版本更新，此版本不是强制更新，可跳過",
                   "redirectUrl": "https://gz.bcebos.com/v1/newretail/test/update.apk"
                 };
-                FlutterAppUpgrade.showUpgradeDialog(context, json);
+                FlutterAppUpgrader.showUpgradeDialog(context, json);
               },
               child: Text("弹非强更窗口"),
             ),
             RaisedButton(
               onPressed: () {
                 Map json = {"forceFlag": 0, "currentLastFlag": 1, "remark": "我是一个版本更新，此版本不是强制更新，可跳過"};
-                FlutterAppUpgrade.showUpgradeDialog(context, json);
+                FlutterAppUpgrader.showUpgradeDialog(context, json);
               },
               child: Text("传入没有新版本的数据"),
             ),
             RaisedButton(
               onPressed: () {
                 if ((_progress ?? 0) == 0) {
-                  FlutterAppUpgrade.upgradeApp("https://gz.bcebos.com/v1/newretail/test/update.apk",
+                  FlutterAppUpgrader.upgradeApp("https://gz.bcebos.com/v1/newretail/test/update.apk",
                       downLoadCallBack: (current, total) {
                     print("downLoad===current:$current,total:$total");
                     setState(() {
@@ -80,14 +80,14 @@ class _HomePageState extends State<HomePage> {
                     });
                   });
                 } else if (_progress == 1) {
-                  FlutterAppUpgrade.installLocalUnInstalledApk();
+                  FlutterAppUpgrader.installLocalUnInstalledApk();
                 }
               },
               child: Text("直接调用更新api   ${(_progress ?? 0) * 100}%"),
             ),
             RaisedButton(
               onPressed: () async {
-                bool hasNewVersion = await FlutterAppUpgrade.hasNewVersionInAppStore();
+                bool hasNewVersion = await FlutterAppUpgrader.hasNewVersionInAppStore();
                 print("=====$hasNewVersion");
               },
               child: Text("检查IOS当前版本是否是最新的"),

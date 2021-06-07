@@ -28,7 +28,7 @@
 		flutter pub get
 
 	引入
-		import 'package:flutter_app_upgrade/flutter_app_upgrader.dart';
+		import 'package:flutter_app_upgrader/flutter_app_upgrader.dart';
 
 	安卓平台需要的额外配置：
 		安卓清单文件./android/app/src/main/AndroidManifest.xml 需要含有以下配置

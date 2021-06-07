@@ -4,8 +4,8 @@
 */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_upgrade/flutter_app_upgrader.dart';
-import 'package:flutter_app_upgrade/version.dart';
+import 'package:flutter_app_upgrader/flutter_app_upgrader.dart';
+import 'package:flutter_app_upgrader/version.dart';
 
 class UpdateDialogWidget extends StatefulWidget {
   final Version version;
