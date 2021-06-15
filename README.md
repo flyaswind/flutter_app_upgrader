@@ -19,14 +19,12 @@
 
 **安装说明：**
 
-	在 pubspec.yaml 中加入：
+	在pubspec.yaml中加入：
 		flutter_app_upgrader:
 			git:
 				url: https://github.com/flyaswind/flutter_app_upgrader.git
-
-	执行 flutter 命令获取包
+	执行flutter命令获取包
 		flutter pub get
-
 	引入
 		import 'package:flutter_app_upgrader/flutter_app_upgrader.dart';
 
@@ -36,32 +34,32 @@
 			<uses-permission android:name="android.permission.INTERNET" />
 			<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-	application 结点内添加
-		<provider
-			android:name="androidx.core.content.FileProvider"
-			android:authorities="{包名}.fileprovider"
-			android:exported="false"
-			android:grantUriPermissions="true">
-			<meta-data
-					android:name="android.support.FILE_PROVIDER_PATHS"
-					android:resource="@xml/file_paths" />
-		</provider>
+		application 结点内添加
+			<provider
+				android:name="androidx.core.content.FileProvider"
+				android:authorities="{包名}.fileprovider"
+				android:exported="false"
+				android:grantUriPermissions="true">
+				<meta-data
+						android:name="android.support.FILE_PROVIDER_PATHS"
+						android:resource="@xml/file_paths" />
+			</provider>
 
-	./android/app/src/main/res/xml/file_paths 配置里面需包含 external-path 示例如下
-	<?xml version="1.0" encoding="utf-8"?>
-	<paths xmlns:android="http://schemas.android.com/apk/res/android">
-		<external-path name="external_download" path=""/>
-		...
-	</paths>
+		./android/app/src/main/res/xml/file_paths 配置里面需包含 external-path 示例如下
+			<?xml version="1.0" encoding="utf-8"?>
+			<paths xmlns:android="http://schemas.android.com/apk/res/android">
+				<external-path name="external_download" path=""/>
+				...
+			</paths>
 
 **使用说明：**
 
 	1.提供简单的 UI 弹窗
     //传入约定的json参考Version对应的json
-    //更新内容 remark
-    //是否有新版本 currentLastFlag 0有新版本 1没有新版本
-    //更新连接 redirectUrl;
-    //是否强制更新 forceFlag 0非强制更新 1强制
+    //remark 更新内容
+    //currentLastFlag 是否有新版本  0有新版本 1没有新版本
+    //redirectUrl 更新连接
+    //forceFlag 是否强制更新 0非强制更新 1强制
     var upgradeJson={
 		"forceFlag": 1,
 		"currentLastFlag": 0,
@@ -71,8 +69,11 @@
     FlutterAppUpgrader.showUpgradeDialog(context, upgradeJson);
 
     2.提供直接更新的方法
-    传入更新地址，安卓完成下载安装，iOS跳转到AppStore
-    含下载进度/失败回调
+    //传入更新地址，安卓完成下载安装，iOS跳转到AppStore
+    //含下载进度/失败回调
+    //url 更新的连接 iOS是跳转app store地址 android是apk下载地址
+    //downLoadCallBack 下载过程中的回调
+    //error 异常信息的回调
     FlutterAppUpgrader.upgradeApp(
     	"https://*****.apk",
         downLoadCallBack: (current, total) {
