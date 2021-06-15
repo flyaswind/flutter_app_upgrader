@@ -1,8 +1,8 @@
 name: flutter_app_upgrader
-description: A new Flutter plugin.
+description: A Flutter plugin for upgrading the app on Android by installing after downloading the new apk or IOS by going to the App Store.
 version: 0.0.1
-author:
-homepage:
+author: flyaswind
+homepage: https://github.com/flyaswind/flutter_app_upgrader
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
